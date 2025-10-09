@@ -1,0 +1,70 @@
+{
+  "name": "typeshadow",
+  "version": "1.0.0",
+  "description": "A cross-platform typing trainer that stops on mistakes.",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:appimage": "electron-builder --linux appimage",
+    "dist:flatpak": "electron-builder --linux flatpak",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^38.2.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.typeshadow.app",
+    "productName": "TypeShadow",
+    "files": [
+      "main.js",
+      "renderer.js",
+      "index.html",
+      "style.css",
+      "package.json",
+      "node_modules/**/*",
+      "Icons/**/*"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "flatpak"
+      ],
+      "category": "Utility",
+      "icon": "Icons" 
+    },
+    "flatpak": {
+      "sdk": "org.freedesktop.Sdk",
+      "runtime": "org.freedesktop.Platform",
+      "runtimeVersion": "25.08",
+      "base": "org.electronjs.Electron2.BaseApp",
+      "baseVersion": "25.08",
+      "finishArgs": [
+        "--share=network",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--device=dri",
+        "--filesystem=home",
+        "--talk-name=org.freedesktop.Notifications",
+        "--talk-name=org.freedesktop.portal.Desktop",
+        "--env=ELECTRON_ENABLE_LOGGING=true"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    }
+  }
+}

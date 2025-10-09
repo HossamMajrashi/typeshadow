@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TypeShadow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-content">
+      <div class="brand">
+        <h1>TypeShadow ⌨️</h1>
+        <p class="subtitle" data-i18n="subtitle">Learn typing by writing over the text</p>
+      </div>
+      <div class="header-controls">
+        <button id="dir-toggle" class="dir-toggle" aria-label="Toggle text direction" title="Toggle RTL/LTR">
+          <span class="dir-icon">⇆</span>
+          <span class="dir-label">LTR</span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <!-- Setup section -->
+    <section class="setup-section">
+      <h2 data-i18n="enterText">✍️ Enter your text:</h2>
+      <textarea 
+        id="custom-text" 
+        rows="6" 
+        data-i18n-placeholder="textPlaceholder"
+        placeholder="Type or paste the text you want to practice..."
+        aria-label="Training text input"
+      ></textarea>
+
+      <div class="controls-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="overlayToggle" checked>
+          <span class="checkbox-text" data-i18n="showOverlay">Show text overlay while typing</span>
+        </label>
+        <button id="start-btn" class="btn-primary" data-i18n="startBtn">Start Exercise</button>
+      </div>
+    </section>
+
+    <!-- Training section (hidden by default) -->
+    <section id="training-section" class="training-section hidden">
+      <h2 data-i18n="typeBelow">🎯 Type the text below:</h2>
+
+      <div class="typing-container">
+        <div id="typing-text" class="typing-overlay" aria-live="polite"></div>
+        <textarea 
+          id="typing-input" 
+          class="typing-input" 
+          rows="6" 
+          disabled
+          aria-label="Typing practice area"
+        ></textarea>
+      </div>
+
+      <!-- Stats display -->
+      <div class="stats-container">
+        <div class="stat-card">
+          <span class="stat-label" data-i18n="wpm">WPM</span>
+          <span id="wpm" class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label" data-i18n="mistakes">Mistakes</span>
+          <span id="mistakes" class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label" data-i18n="accuracy">Accuracy</span>
+          <span id="accuracy" class="stat-value">100%</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p data-i18n="footer">TypeShadow v1.0 | By Hossam Hassan Majrashi</p>
+  </footer>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

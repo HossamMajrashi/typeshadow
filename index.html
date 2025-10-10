@@ -14,6 +14,15 @@
         <p class="subtitle" data-i18n="subtitle">Learn typing by writing over the text</p>
       </div>
       <div class="header-controls">
+        <button id="stats-toggle" class="icon-btn" aria-label="Toggle statistics" title="View Statistics">
+          <span class="icon">📊</span>
+        </button>
+        <button id="settings-toggle" class="icon-btn" aria-label="Toggle settings" title="Settings">
+          <span class="icon">⚙️</span>
+        </button>
+        <button id="sound-toggle" class="icon-btn" aria-label="Toggle sound" title="Mute/Unmute Timer">
+          <span class="sound-icon">🔊</span>
+        </button>
         <button id="dir-toggle" class="dir-toggle" aria-label="Toggle text direction" title="Toggle RTL/LTR">
           <span class="dir-icon">⇆</span>
           <span class="dir-label">LTR</span>
@@ -26,6 +35,68 @@
   </header>
 
   <main class="app-main">
+    <!-- Statistics Panel (Hidden by default) -->
+    <section id="stats-panel" class="stats-panel hidden">
+      <div class="panel-header">
+        <h2>📊 <span data-i18n="statsTitle">Typing Statistics</span></h2>
+        <button id="clear-stats" class="btn-danger-small" data-i18n="clearStats">Clear History</button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-big-card">
+          <span class="stat-big-label" data-i18n="avgWPM">Average WPM</span>
+          <span id="avg-wpm" class="stat-big-value">0</span>
+        </div>
+        <div class="stat-big-card">
+          <span class="stat-big-label" data-i18n="bestWPM">Best WPM</span>
+          <span id="best-wpm" class="stat-big-value">0</span>
+        </div>
+        <div class="stat-big-card">
+          <span class="stat-big-label" data-i18n="totalSessions">Total Sessions</span>
+          <span id="total-sessions" class="stat-big-value">0</span>
+        </div>
+        <div class="stat-big-card">
+          <span class="stat-big-label" data-i18n="avgAccuracy">Average Accuracy</span>
+          <span id="avg-accuracy" class="stat-big-value">0%</span>
+        </div>
+      </div>
+
+      <div class="history-section">
+        <h3 data-i18n="recentSessions">Recent Sessions</h3>
+        <div id="session-history" class="session-history">
+          <p class="no-data" data-i18n="noHistory">No typing sessions yet. Start practicing!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings Panel (Hidden by default) -->
+    <section id="settings-panel" class="settings-panel hidden">
+      <h2>⚙️ <span data-i18n="settingsTitle">Settings</span></h2>
+
+      <div class="setting-group">
+        <label class="setting-label" data-i18n="fontSize">Font Size</label>
+        <div class="font-size-controls">
+          <button id="font-decrease" class="font-btn">A-</button>
+          <span id="font-size-display" class="font-size-display">16px</span>
+          <button id="font-increase" class="font-btn">A+</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="sound-effects" checked>
+          <span data-i18n="soundEffects">Timer Sound Effects</span>
+        </label>
+      </div>
+
+      <div class="setting-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="show-timer" checked>
+          <span data-i18n="showTimer">Show Timer</span>
+        </label>
+      </div>
+    </section>
+
     <!-- Setup section -->
     <section class="setup-section">
       <h2 data-i18n="enterText">✍️ Enter your text:</h2>
@@ -48,7 +119,10 @@
 
     <!-- Training section (hidden by default) -->
     <section id="training-section" class="training-section hidden">
-      <h2 data-i18n="typeBelow">🎯 Type the text below:</h2>
+      <div class="training-header">
+        <h2 data-i18n="typeBelow">🎯 Type the text below:</h2>
+        <div id="timer-display" class="timer-display">00:00</div>
+      </div>
 
       <div class="typing-container">
         <div id="typing-text" class="typing-overlay" aria-live="polite"></div>
@@ -80,7 +154,7 @@
   </main>
 
   <footer class="app-footer">
-    <p data-i18n="footer">TypeShadow v1.0 | By Hossam Hassan Majrashi</p>
+    <p data-i18n="footer">TypeShadow v1.0 | BY Hossam Hassan Majrashi</p>
   </footer>
 
   <script src="renderer.js"></script>

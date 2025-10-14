@@ -1,9 +1,9 @@
 [Desktop Entry]
+Type=Application
 Name=TypeShadow
 Comment=Typing trainer with RTL/LTR support
-Exec=typeshadow.sh
 Icon=com.hossam.typeshadow
-Type=Application
-Categories=Education;Utility;
+Exec=run.sh
 Terminal=false
+Categories=Education;Utility;
 StartupNotify=true
